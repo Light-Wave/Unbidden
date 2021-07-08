@@ -1,0 +1,11 @@
+[
+  {
+    "type": "MOD_INFO",
+    "id": "unbidden",
+    "name": "Unbidden",
+    "maintainers": [ "Light-Wave" ],
+    "description": "Playable ethereal extradimensional invaders",
+    "category": "content",
+    "dependencies": [ "dda", "magiclysm" ]
+  }
+]
