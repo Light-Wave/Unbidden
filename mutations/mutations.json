@@ -21,6 +21,7 @@
     "type": "mutation",
     "id": "SOULSIPHON",
     "name": { "str": "Soul Siphon" },
+    "flags": [ "SOULSIPHON" ],
     "description": "Killing enemies lets you siphon some of their soul,  converting it to mana for you to use."
   },
   {
