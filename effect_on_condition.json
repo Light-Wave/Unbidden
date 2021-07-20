@@ -8,31 +8,44 @@
       "and": [
         { "u_has_trait_flag": "SOULSIPHON" },
         {
-          "u_compare_var": "souls_digested",
-          "type": "counter",
-          "context": "soul_siphon",
-          "op": "<",
-          "value": 1,
-        },
-        { "u_is_height": 0 }
+          "compare": [
+            { "u_var": "experience_digested", "type": "counter", "context": "soul_siphon" },
+            { "value": "u_experience" }
+          ],
+          "op": "<"
+        }
       ]
     },
-    "deactivate_condition": { "not": { "or": [ { "is_weather": "thunder" }, { "is_weather": "lightning" } ] } },
-    "effect": [
-      { "message": "You hear a distant rumble of thunder.", "sound": true },
-      { "sound_effect": "thunder_far", "outdoor_event": true, "id": "environment" }
-    ]
-  },
-  {
-    "type": "effect_on_condition",
-    "id": "soul_siphon_calc",
-    "recurrence_min": 1,
-    "recurrence_max": 1,
-    "condition": { "u_has_trait_flag": "SOULSIPHON" },
     "deactivate_condition": { "not": { "u_has_trait_flag": "SOULSIPHON" } },
     "effect": [
-      { "message": "You hear a distant rumble of thunder.", "sound": true },
-      { "sound_effect": "thunder_far", "outdoor_event": true, "id": "environment" }
+      { "arithmetics": "[
+        { "value": "u_experience" },
+        { "u_var": "experience_digested", "type": "counter", "context": "soul_siphon" },
+        { "u_var": "experience_to_digest", "type": "counter", "context": "soul_siphon" }
+        ],
+      "op": "-"
+      },
+      { "arithmetics": "[
+        { "u_var": "experience_to_digest", "type": "counter", "context": "soul_siphon" }
+        { "const": 4 },
+        { "u_var": "gained_mana", "type": "counter", "context": "soul_siphon" },
+        ],
+      "op": "*"
+      },
+      { "arithmetics": "[
+        { "u_var": "gained_mana", "type": "counter", "context": "soul_siphon" },
+        { "u_var": "mana" },
+        { "u_var": "mana" }
+        ],
+      "op": "+"
+      },
+      { "arithmetics": "[
+        { "u_var": "mana" },
+        { "u_var": "mana_max" },
+        { "u_var": "mana" },
+        ],
+      "op": "min"
+      }
     ]
   }
 ]
