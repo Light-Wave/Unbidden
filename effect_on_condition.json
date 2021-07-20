@@ -18,28 +18,28 @@
     },
     "deactivate_condition": { "not": { "u_has_trait_flag": "SOULSIPHON" } },
     "effect": [
-      { "arithmetics": "[
+      { "arithmetics": [
         { "value": "u_experience" },
         { "u_var": "experience_digested", "type": "counter", "context": "soul_siphon" },
         { "u_var": "experience_to_digest", "type": "counter", "context": "soul_siphon" }
         ],
       "op": "-"
       },
-      { "arithmetics": "[
+      { "arithmetics": [
         { "u_var": "experience_to_digest", "type": "counter", "context": "soul_siphon" }
         { "const": 4 },
         { "u_var": "gained_mana", "type": "counter", "context": "soul_siphon" },
         ],
       "op": "*"
       },
-      { "arithmetics": "[
+      { "arithmetics": [
         { "u_var": "gained_mana", "type": "counter", "context": "soul_siphon" },
         { "u_var": "mana" },
         { "u_var": "mana" }
         ],
       "op": "+"
       },
-      { "arithmetics": "[
+      { "arithmetics": [
         { "u_var": "mana" },
         { "u_var": "mana_max" },
         { "u_var": "mana" },
